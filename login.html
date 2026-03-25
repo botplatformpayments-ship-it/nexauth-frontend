@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NexAuth — Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #050508; --bg2: #0c0c14; --surface: #111120;
+      --border: #1e1e35; --accent: #6c63ff; --accent2: #ff6b6b;
+      --accent3: #00e5ff; --text: #e8e8f0; --muted: #6b6b8a;
+      --success: #00e676; --error: #ff5252;
+      --font-head: 'Syne', sans-serif; --font-mono: 'DM Mono', monospace;
+    }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-mono); min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.25; pointer-events: none;
+    }
+
+    .blob { position: fixed; border-radius: 50%; filter: blur(100px); pointer-events: none; }
+    .blob-1 { width: 500px; height: 500px; background: var(--accent); top: -150px; right: -150px; opacity: 0.1; }
+    .blob-2 { width: 350px; height: 350px; background: var(--accent3); bottom: -100px; left: -100px; opacity: 0.08; }
+
+    .login-wrap {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 440px;
+      padding: 24px;
+    }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--muted); text-decoration: none; font-size: 0.78rem;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 32px; transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--text); }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 36px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+    .card-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-head); font-size: 1.3rem; font-weight: 800;
+      margin-bottom: 32px;
+    }
+    .logo-icon { width: 30px; height: 30px; background: linear-gradient(135deg, var(--accent), var(--accent3)); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
+    .logo-accent { color: var(--accent); }
+
+    .card-title { font-family: var(--font-head); font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; }
+    .card-sub { color: var(--muted); font-size: 0.82rem; margin-bottom: 32px; line-height: 1.7; }
+
+    .form-group { margin-bottom: 20px; }
+    label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
+
+    input {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108,99,255,0.15); }
+    input::placeholder { color: var(--muted); }
+
+    .form-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .forgot { font-size: 0.75rem; color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+    .forgot:hover { opacity: 0.7; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      box-shadow: 0 0 24px rgba(108,99,255,0.35);
+      transition: all 0.2s;
+      margin-top: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-submit:hover { background: #7c74ff; transform: translateY(-1px); box-shadow: 0 0 36px rgba(108,99,255,0.5); }
+    .btn-submit:active { transform: translateY(0); }
+
+    .divider-row { display: flex; align-items: center; gap: 12px; margin: 24px 0; }
+    .divider-line { flex: 1; height: 1px; background: var(--border); }
+    .divider-text { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    .register-link { text-align: center; font-size: 0.8rem; color: var(--muted); }
+    .register-link a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+    .register-link a:hover { opacity: 0.7; }
+
+    .alert {
+      background: rgba(255,82,82,0.1);
+      border: 1px solid rgba(255,82,82,0.3);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.8rem;
+      color: var(--error);
+      margin-bottom: 20px;
+      display: none;
+    }
+    .alert.show { display: block; animation: fadeUp 0.3s ease; }
+  </style>
+</head>
+<body>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<div class="login-wrap">
+  <a href="index.html" class="back-link">← Back to Home</a>
+
+  <div class="card">
+    <div class="card-logo">
+      <div class="logo-icon">⬡</div>
+      Nex<span class="logo-accent">Auth</span>
+    </div>
+
+    <h1 class="card-title">Welcome back.</h1>
+    <p class="card-sub">Sign in to your dashboard to manage your apps and licenses.</p>
+
+    <div class="alert" id="alert">Invalid credentials. Please try again.</div>
+
+    <div class="form-group">
+      <label>Username or Email</label>
+      <input type="text" id="username" placeholder="john_doe" autocomplete="off"/>
+    </div>
+
+    <div class="form-group">
+      <div class="form-row">
+        <label style="margin:0">Password</label>
+        <a href="#" class="forgot">Forgot password?</a>
+      </div>
+      <input type="password" id="password" placeholder="••••••••••••"/>
+    </div>
+
+    <button class="btn-submit" onclick="handleLogin()">Sign In →</button>
+
+    <div class="divider-row">
+      <div class="divider-line"></div>
+      <span class="divider-text">or</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <p class="register-link">Don't have an account? <a href="register.html">Create one →</a></p>
+  </div>
+</div>
+
+<script>
+  async function handleLogin() {
+    const u = document.getElementById('username').value.trim();
+    const p = document.getElementById('password').value;
+    const alertEl = document.getElementById('alert');
+    const btn = document.querySelector('.btn-submit');
+
+    alertEl.classList.remove('show');
+
+    if (!u || !p) {
+      alertEl.textContent = 'Please fill in all fields.';
+      alertEl.classList.add('show');
+      return;
+    }
+
+    btn.textContent = 'Signing in...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://nexauth-backend.onrender.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: u, password: p })
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        window.location.href = 'dashboard.html';
+      } else {
+        alertEl.textContent = data.message || 'Invalid credentials.';
+        alertEl.classList.add('show');
+        btn.textContent = 'Sign In →';
+        btn.disabled = false;
+      }
+    } catch (err) {
+      alertEl.textContent = 'Server error. Make sure backend is running.';
+      alertEl.classList.add('show');
+      btn.textContent = 'Sign In →';
+      btn.disabled = false;
+    }
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') handleLogin(); });
+</script>
+</body>
+</html>
