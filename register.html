@@ -142,6 +142,7 @@
     const confirm = document.getElementById('confirm').value;
     const terms = document.getElementById('terms').checked;
     const alert = document.getElementById('alert');
+    const btn = document.querySelector('.btn-submit');
     alert.className = 'alert';
 
     if (!fname || !lname || !username || !email || !password) {
@@ -165,7 +166,7 @@
     btn.disabled = true;
 
     try {
-      const res = await fetch('https://nexauth-backend.onrender.com', {
+      const res = await fetch('https://nexauth-backend.onrender.com/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password, firstName: fname, lastName: lname })
