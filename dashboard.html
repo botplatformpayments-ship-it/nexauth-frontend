@@ -15,13 +15,11 @@
       --font-head: 'Syne', sans-serif; --font-mono: 'DM Mono', monospace;
     }
     body { background: var(--bg); color: var(--text); font-family: var(--font-mono); min-height: 100vh; display: flex; overflow-x: hidden; }
-
-    /* SIDEBAR */
     .sidebar { width: 240px; min-height: 100vh; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; position: fixed; left: 0; top: 0; bottom: 0; z-index: 100; }
     .sidebar-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-head); font-size: 1.2rem; font-weight: 800; padding: 24px 20px; border-bottom: 1px solid var(--border); }
     .logo-icon { width: 28px; height: 28px; background: linear-gradient(135deg, var(--accent), var(--accent3)); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
     .logo-accent { color: var(--accent); }
-    .sidebar-nav { flex: 1; padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-nav { flex: 1; padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; }
     .nav-section { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); padding: 12px 8px 6px; }
     .nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; cursor: pointer; font-size: 0.82rem; color: var(--muted); transition: all 0.2s; border: 1px solid transparent; }
     .nav-item:hover { background: var(--surface2); color: var(--text); }
@@ -34,21 +32,14 @@
     .user-plan { font-size: 0.7rem; color: var(--muted); }
     .logout-btn { color: var(--muted); cursor: pointer; font-size: 0.9rem; transition: color 0.2s; background: none; border: none; padding: 4px; }
     .logout-btn:hover { color: var(--accent2); }
-
-    /* MAIN */
     .main { margin-left: 240px; flex: 1; min-height: 100vh; display: flex; flex-direction: column; }
     .topbar { padding: 20px 32px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: var(--bg); position: sticky; top: 0; z-index: 50; }
     .page-title { font-family: var(--font-head); font-size: 1.3rem; font-weight: 800; }
     .topbar-actions { display: flex; gap: 10px; }
-
     .content { padding: 32px; flex: 1; }
-
-    /* TABS / PAGES */
     .page { display: none; }
     .page.active { display: block; animation: fadeIn 0.3s ease; }
     @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-
-    /* STATS GRID */
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
     .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; position: relative; overflow: hidden; }
     .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
@@ -59,14 +50,10 @@
     .stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 10px; }
     .stat-value { font-family: var(--font-head); font-size: 2rem; font-weight: 800; }
     .stat-sub { font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
-
-    /* CARDS */
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
     .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
     .card-title { font-family: var(--font-head); font-size: 1rem; font-weight: 700; }
     .card-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
-
-    /* BUTTONS */
     .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 7px; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.06em; }
     .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 0 16px rgba(108,99,255,0.3); }
     .btn-primary:hover { background: #7c74ff; transform: translateY(-1px); }
@@ -76,9 +63,8 @@
     .btn-ghost:hover { color: var(--text); border-color: var(--accent); }
     .btn-success { background: rgba(0,230,118,0.15); color: var(--accent4); border: 1px solid rgba(0,230,118,0.25); }
     .btn-success:hover { background: rgba(0,230,118,0.25); }
+    .btn-warning { background: rgba(255,154,60,0.15); color: #ff9a3c; border: 1px solid rgba(255,154,60,0.25); }
     .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
-
-    /* FORMS */
     .form-row { display: grid; gap: 16px; }
     .form-row.cols2 { grid-template-columns: 1fr 1fr; }
     .form-row.cols3 { grid-template-columns: 1fr 1fr 1fr; }
@@ -87,47 +73,36 @@
     .form-input, .form-select { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text); outline: none; transition: border-color 0.2s; }
     .form-input:focus, .form-select:focus { border-color: var(--accent); }
     .form-select option { background: var(--surface); }
-
-    /* TABLE */
     .table-wrap { overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
     thead th { text-align: left; padding: 10px 14px; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); border-bottom: 1px solid var(--border); font-weight: 500; }
     tbody td { padding: 12px 14px; border-bottom: 1px solid rgba(30,30,53,0.6); vertical-align: middle; }
     tbody tr:last-child td { border-bottom: none; }
     tbody tr:hover td { background: rgba(108,99,255,0.04); }
-
-    /* BADGES */
     .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 99px; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
     .badge-active { background: rgba(0,230,118,0.12); color: var(--accent4); border: 1px solid rgba(0,230,118,0.2); }
+    .badge-banned { background: rgba(255,82,82,0.12); color: #ff5252; border: 1px solid rgba(255,82,82,0.2); }
     .badge-revoked { background: rgba(255,82,82,0.12); color: #ff5252; border: 1px solid rgba(255,82,82,0.2); }
     .badge-expired { background: rgba(255,154,60,0.12); color: #ff9a3c; border: 1px solid rgba(255,154,60,0.2); }
     .badge-lifetime { background: rgba(108,99,255,0.12); color: var(--accent); border: 1px solid rgba(108,99,255,0.2); }
     .badge-monthly { background: rgba(0,229,255,0.12); color: var(--accent3); border: 1px solid rgba(0,229,255,0.2); }
-
-    /* KEY DISPLAY */
+    .badge-info { background: rgba(108,99,255,0.12); color: var(--accent); border: 1px solid rgba(108,99,255,0.2); }
+    .badge-warning { background: rgba(255,154,60,0.12); color: #ff9a3c; border: 1px solid rgba(255,154,60,0.2); }
     .key-cell { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent3); letter-spacing: 0.05em; }
-
-    /* MODAL */
     .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
     .modal-overlay.show { display: flex; }
-    .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; width: 100%; max-width: 440px; animation: fadeIn 0.2s ease; }
+    .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; width: 100%; max-width: 480px; animation: fadeIn 0.2s ease; }
     .modal-title { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
     .modal-sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 24px; }
     .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px; }
-
-    /* ALERT */
     .alertBox { padding: 12px 16px; border-radius: 8px; font-size: 0.8rem; margin-bottom: 16px; display: none; }
     .alertBox.show { display: block; }
     .alertBox.error { background: rgba(255,82,82,0.1); border: 1px solid rgba(255,82,82,0.3); color: #ff5252; }
     .alertBox.success { background: rgba(0,230,118,0.1); border: 1px solid rgba(0,230,118,0.3); color: var(--accent4); }
     .alertBox.info { background: rgba(108,99,255,0.1); border: 1px solid rgba(108,99,255,0.3); color: var(--accent); }
-
-    /* EMPTY STATE */
     .empty { text-align: center; padding: 48px 24px; color: var(--muted); }
     .empty-icon { font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4; }
     .empty-text { font-size: 0.85rem; }
-
-    /* ACTIVITY LOG */
     .log-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(30,30,53,0.6); }
     .log-item:last-child { border-bottom: none; }
     .log-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
@@ -138,37 +113,17 @@
     .log-event { font-size: 0.8rem; }
     .log-meta { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
     .log-time { font-size: 0.7rem; color: var(--muted); white-space: nowrap; }
-
-    /* COPY BTN */
     .copy-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; transition: all 0.2s; }
     .copy-btn:hover { color: var(--accent); background: rgba(108,99,255,0.1); }
-
-    /* PROGRESS BAR */
-    .progress-bar { height: 4px; background: var(--border); border-radius: 99px; overflow: hidden; margin-top: 6px; }
-    .progress-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--accent), var(--accent3)); transition: width 0.5s ease; }
-
-    /* LOADING SPINNER */
-    .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.2); border-top-color: #fff; border-radius: 50%; animation: spin 0.6s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* HWID TAG */
     .hwid-tag { font-size: 0.72rem; color: var(--muted); font-family: var(--font-mono); background: var(--bg2); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border); }
-
-    /* SCROLLBAR */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
-
-    @media (max-width: 900px) {
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .sidebar { width: 200px; }
-      .main { margin-left: 200px; }
-    }
+    @media (max-width: 900px) { .stats-grid { grid-template-columns: 1fr 1fr; } .sidebar { width: 200px; } .main { margin-left: 200px; } }
   </style>
 </head>
 <body>
 
-<!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="sidebar-logo">
     <div class="logo-icon">⬡</div>
@@ -176,35 +131,23 @@
   </div>
   <nav class="sidebar-nav">
     <div class="nav-section">Overview</div>
-    <div class="nav-item active" onclick="showPage('overview', this)">
-      <span class="icon">📊</span> Dashboard
-    </div>
+    <div class="nav-item active" onclick="showPage('overview', this)"><span class="icon">📊</span> Dashboard</div>
     <div class="nav-section">Management</div>
-    <div class="nav-item" onclick="showPage('apps', this)">
-      <span class="icon">📦</span> Applications
-    </div>
-    <div class="nav-item" onclick="showPage('licenses', this)">
-      <span class="icon">🔑</span> Licenses
-    </div>
-    <div class="nav-item" onclick="showPage('hwid', this)">
-      <span class="icon">💻</span> HWID Manager
-    </div>
-    <div class="nav-item" onclick="showPage('blacklist', this)">
-      <span class="icon">🚫</span> Blacklist
-    </div>
+    <div class="nav-item" onclick="showPage('apps', this)"><span class="icon">📦</span> Applications</div>
+    <div class="nav-item" onclick="showPage('users', this)"><span class="icon">👥</span> Users</div>
+    <div class="nav-item" onclick="showPage('licenses', this)"><span class="icon">🔑</span> Licenses</div>
+    <div class="nav-item" onclick="showPage('hwid', this)"><span class="icon">💻</span> HWID Manager</div>
+    <div class="nav-item" onclick="showPage('blacklist', this)"><span class="icon">🚫</span> Blacklist</div>
+    <div class="nav-section">Features</div>
+    <div class="nav-item" onclick="showPage('variables', this)"><span class="icon">📝</span> Variables</div>
+    <div class="nav-item" onclick="showPage('announcements', this)"><span class="icon">📢</span> Announcements</div>
+    <div class="nav-item" onclick="showPage('sellers', this)"><span class="icon">🏪</span> Sellers</div>
+    <div class="nav-item" onclick="showPage('webhooks', this)"><span class="icon">🔗</span> Webhooks</div>
     <div class="nav-section">System</div>
-    <div class="nav-item" onclick="showPage('activity', this)">
-      <span class="icon">📋</span> Activity Log
-    </div>
-    <div class="nav-item" onclick="showPage('apikeys', this)">
-      <span class="icon">🔐</span> API Keys
-    </div>
-    <div class="nav-item" onclick="window.location.href='sdk.html'">
-      <span class="icon">📚</span> SDK / Docs
-    </div>
-    <div class="nav-item" onclick="showPage('settings', this)">
-      <span class="icon">⚙️</span> Settings
-    </div>
+    <div class="nav-item" onclick="showPage('activity', this)"><span class="icon">📋</span> Activity Log</div>
+    <div class="nav-item" onclick="showPage('apikeys', this)"><span class="icon">🔐</span> API Keys</div>
+    <div class="nav-item" onclick="window.location.href='sdk.html'"><span class="icon">📚</span> SDK / Docs</div>
+    <div class="nav-item" onclick="showPage('settings', this)"><span class="icon">⚙️</span> Settings</div>
   </nav>
   <div class="sidebar-user">
     <div class="user-avatar" id="userAvatar">?</div>
@@ -216,12 +159,9 @@
   </div>
 </aside>
 
-<!-- MAIN -->
 <main class="main">
   <div class="topbar">
-    <div>
-      <div class="page-title" id="pageTitle">Dashboard</div>
-    </div>
+    <div><div class="page-title" id="pageTitle">Dashboard</div></div>
     <div class="topbar-actions">
       <button class="btn btn-primary" id="topbarAction" onclick="topbarActionClick()">+ New App</button>
     </div>
@@ -229,289 +169,266 @@
 
   <div class="content">
 
-    <!-- ===== OVERVIEW PAGE ===== -->
+    <!-- OVERVIEW -->
     <div class="page active" id="page-overview">
       <div class="stats-grid">
-        <div class="stat-card c1">
-          <div class="stat-label">Total Apps</div>
-          <div class="stat-value" id="stat-apps">—</div>
-          <div class="stat-sub">Active applications</div>
-        </div>
-        <div class="stat-card c2">
-          <div class="stat-label">Total Licenses</div>
-          <div class="stat-value" id="stat-licenses">—</div>
-          <div class="stat-sub">All license keys</div>
-        </div>
-        <div class="stat-card c3">
-          <div class="stat-label">Active Licenses</div>
-          <div class="stat-value" id="stat-active">—</div>
-          <div class="stat-sub">Currently valid</div>
-        </div>
-        <div class="stat-card c4">
-          <div class="stat-label">Validations</div>
-          <div class="stat-value" id="stat-validations">—</div>
-          <div class="stat-sub">Total checks</div>
-        </div>
+        <div class="stat-card c1"><div class="stat-label">Total Apps</div><div class="stat-value" id="stat-apps">—</div><div class="stat-sub">Active applications</div></div>
+        <div class="stat-card c2"><div class="stat-label">Total Users</div><div class="stat-value" id="stat-users">—</div><div class="stat-sub">Registered users</div></div>
+        <div class="stat-card c3"><div class="stat-label">Active Licenses</div><div class="stat-value" id="stat-active">—</div><div class="stat-sub">Currently valid</div></div>
+        <div class="stat-card c4"><div class="stat-label">Validations</div><div class="stat-value" id="stat-validations">—</div><div class="stat-sub">Total checks</div></div>
       </div>
-
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
         <div class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">Recent Apps</div>
-              <div class="card-sub">Your latest applications</div>
-            </div>
-            <button class="btn btn-ghost" onclick="goToApps()">View All</button>
-          </div>
+          <div class="card-header"><div><div class="card-title">Recent Apps</div><div class="card-sub">Your latest applications</div></div><button class="btn btn-ghost" onclick="goToApps()">View All</button></div>
           <div id="recentApps"><div class="empty"><div class="empty-icon">📦</div><div class="empty-text">No apps yet</div></div></div>
         </div>
         <div class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">Recent Activity</div>
-              <div class="card-sub">Latest license validations</div>
-            </div>
-          </div>
+          <div class="card-header"><div><div class="card-title">Recent Activity</div><div class="card-sub">Latest events</div></div></div>
           <div id="recentActivity"><div class="empty"><div class="empty-icon">📋</div><div class="empty-text">No activity yet</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- ===== APPS PAGE ===== -->
+    <!-- APPS -->
     <div class="page" id="page-apps">
       <div class="alertBox" id="apps-alert"></div>
       <div class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">Create New App</div>
-            <div class="card-sub">Add a new application to protect</div>
-          </div>
-        </div>
+        <div class="card-header"><div><div class="card-title">Create New App</div><div class="card-sub">Add a new application to protect</div></div></div>
         <div class="form-row cols2" style="margin-bottom:16px;">
-          <div class="form-group">
-            <label class="form-label">App Name</label>
-            <input class="form-input" id="appName" placeholder="My Awesome App"/>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Description</label>
-            <input class="form-input" id="appDesc" placeholder="Optional description"/>
-          </div>
+          <div class="form-group"><label class="form-label">App Name</label><input class="form-input" id="appName" placeholder="My Awesome App"/></div>
+          <div class="form-group"><label class="form-label">Description</label><input class="form-input" id="appDesc" placeholder="Optional description"/></div>
         </div>
         <button class="btn btn-primary" id="createAppBtn" onclick="createApp()">+ Create App</button>
       </div>
-
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">Your Applications</div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Name</th><th>App ID</th><th>Status</th><th>Created</th><th>Actions</th></tr></thead>
-            <tbody id="appsTable"><tr><td colspan="5"><div class="empty"><div class="empty-icon">📦</div><div class="empty-text">No apps yet — create one above!</div></div></td></tr></tbody>
-          </table>
-        </div>
+        <div class="card-header"><div class="card-title">Your Applications</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Name</th><th>App ID</th><th>Status</th><th>Created</th><th>Actions</th></tr></thead>
+          <tbody id="appsTable"><tr><td colspan="5"><div class="empty"><div class="empty-icon">📦</div><div class="empty-text">No apps yet</div></div></td></tr></tbody>
+        </table></div>
       </div>
     </div>
 
-    <!-- ===== LICENSES PAGE ===== -->
+    <!-- USERS -->
+    <div class="page" id="page-users">
+      <div class="alertBox" id="users-alert"></div>
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Create User</div><div class="card-sub">Add a user to your application</div></div></div>
+        <div class="form-row cols3" style="margin-bottom:16px;">
+          <div class="form-group"><label class="form-label">Application</label><select class="form-select" id="userAppId"><option value="">Select App...</option></select></div>
+          <div class="form-group"><label class="form-label">Username</label><input class="form-input" id="newUsername" placeholder="username"/></div>
+          <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password" id="newPassword" placeholder="password"/></div>
+        </div>
+        <div class="form-row cols2" style="margin-bottom:16px;">
+          <div class="form-group"><label class="form-label">Email (optional)</label><input class="form-input" id="newEmail" placeholder="user@email.com"/></div>
+          <div class="form-group"><label class="form-label">Subscription Expiry (optional)</label><input class="form-input" type="datetime-local" id="newExpiry"/></div>
+        </div>
+        <button class="btn btn-primary" onclick="createUser()">+ Create User</button>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Users</div>
+          <select class="form-select" id="filterUserApp" onchange="loadUsers()" style="padding:6px 12px;font-size:0.78rem;"><option value="">All Apps</option></select>
+        </div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Username</th><th>Email</th><th>App</th><th>HWID</th><th>Expiry</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="usersTable"><tr><td colspan="7"><div class="empty"><div class="empty-icon">👥</div><div class="empty-text">No users yet</div></div></td></tr></tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <!-- LICENSES -->
     <div class="page" id="page-licenses">
       <div class="alertBox" id="lic-alert"></div>
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">Generate Licenses</div>
-        </div>
+        <div class="card-header"><div class="card-title">Generate Licenses</div></div>
         <div class="form-row cols3" style="margin-bottom:16px;">
-          <div class="form-group">
-            <label class="form-label">Application</label>
-            <select class="form-select" id="licAppId"><option value="">Select App...</option></select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">License Type</label>
-            <select class="form-select" id="licType">
-              <option value="lifetime">Lifetime</option>
-              <option value="yearly">Yearly</option>
-              <option value="monthly">Monthly</option>
-              <option value="weekly">Weekly</option>
-              <option value="daily">Daily</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Quantity</label>
-            <input class="form-input" type="number" id="licCount" value="1" min="1" max="500" placeholder="1"/>
-          </div>
+          <div class="form-group"><label class="form-label">Application</label><select class="form-select" id="licAppId"><option value="">Select App...</option></select></div>
+          <div class="form-group"><label class="form-label">License Type</label><select class="form-select" id="licType"><option value="lifetime">Lifetime</option><option value="yearly">Yearly</option><option value="monthly">Monthly</option><option value="weekly">Weekly</option><option value="daily">Daily</option></select></div>
+          <div class="form-group"><label class="form-label">Quantity</label><input class="form-input" type="number" id="licCount" value="1" min="1" max="500"/></div>
         </div>
-        <div class="form-group" style="margin-bottom:16px;">
-          <label class="form-label">Note (optional)</label>
-          <input class="form-input" id="licNote" placeholder="e.g. Customer name"/>
-        </div>
+        <div class="form-group" style="margin-bottom:16px;"><label class="form-label">Note (optional)</label><input class="form-input" id="licNote" placeholder="e.g. Customer name"/></div>
         <button class="btn btn-primary" onclick="generateLicenses()">⚡ Generate Licenses</button>
       </div>
-
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">License Keys</div>
-          <div style="display:flex;gap:10px;align-items:center;">
-            <select class="form-select" id="filterApp" onchange="loadLicenses()" style="padding:6px 12px;font-size:0.78rem;">
-              <option value="">All Apps</option>
-            </select>
-          </div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Key</th><th>App</th><th>Type</th><th>Status</th><th>HWID</th><th>Expires</th><th>Actions</th></tr></thead>
-            <tbody id="licensesTable"><tr><td colspan="7"><div class="empty"><div class="empty-icon">🔑</div><div class="empty-text">No licenses yet</div></div></td></tr></tbody>
-          </table>
-        </div>
+        <div class="card-header"><div class="card-title">License Keys</div><select class="form-select" id="filterApp" onchange="loadLicenses()" style="padding:6px 12px;font-size:0.78rem;"><option value="">All Apps</option></select></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Key</th><th>App</th><th>Type</th><th>Status</th><th>HWID</th><th>Expires</th><th>Actions</th></tr></thead>
+          <tbody id="licensesTable"><tr><td colspan="7"><div class="empty"><div class="empty-icon">🔑</div><div class="empty-text">No licenses yet</div></div></td></tr></tbody>
+        </table></div>
       </div>
     </div>
 
-    <!-- ===== HWID PAGE ===== -->
+    <!-- HWID -->
     <div class="page" id="page-hwid">
       <div class="alertBox" id="hwid-alert"></div>
       <div class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">HWID Manager</div>
-            <div class="card-sub">Reset hardware ID bindings for licenses</div>
-          </div>
-        </div>
+        <div class="card-header"><div><div class="card-title">HWID Manager</div><div class="card-sub">Reset hardware ID bindings</div></div></div>
         <div class="form-row cols2" style="margin-bottom:16px;">
-          <div class="form-group">
-            <label class="form-label">License Key</label>
-            <input class="form-input" id="hwidKey" placeholder="XXXX-XXXX-XXXX-XXXX"/>
-          </div>
-          <div class="form-group" style="justify-content:flex-end;">
-            <label class="form-label">&nbsp;</label>
-            <button class="btn btn-primary" onclick="searchLicenseForHwid()">🔍 Search License</button>
-          </div>
+          <div class="form-group"><label class="form-label">License Key</label><input class="form-input" id="hwidKey" placeholder="XXXX-XXXX-XXXX-XXXX"/></div>
+          <div class="form-group" style="justify-content:flex-end;"><label class="form-label">&nbsp;</label><button class="btn btn-primary" onclick="searchLicenseForHwid()">🔍 Search</button></div>
         </div>
-        <div id="hwidResult" style="display:none;" class="card" style="margin-top:16px;background:var(--bg2);">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <div>
-              <div style="font-size:0.8rem;color:var(--muted);margin-bottom:4px;">Current HWID</div>
-              <div class="hwid-tag" id="currentHwid">None</div>
-            </div>
+        <div id="hwidResult" style="display:none;">
+          <div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg2);padding:16px;border-radius:8px;border:1px solid var(--border);">
+            <div><div style="font-size:0.8rem;color:var(--muted);margin-bottom:4px;">Current HWID</div><div class="hwid-tag" id="currentHwid">None</div></div>
             <button class="btn btn-danger" onclick="resetHwid()">↺ Reset HWID</button>
           </div>
         </div>
       </div>
-
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">All HWID Bindings</div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>License Key</th><th>HWID</th><th>Type</th><th>Status</th><th>Actions</th></tr></thead>
-            <tbody id="hwidTable"><tr><td colspan="5"><div class="empty"><div class="empty-icon">💻</div><div class="empty-text">No HWID bindings yet</div></div></td></tr></tbody>
-          </table>
-        </div>
+        <div class="card-header"><div class="card-title">All HWID Bindings</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>License Key</th><th>HWID</th><th>Type</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="hwidTable"><tr><td colspan="5"><div class="empty"><div class="empty-icon">💻</div><div class="empty-text">No HWID bindings yet</div></div></td></tr></tbody>
+        </table></div>
       </div>
     </div>
 
-    <!-- ===== BLACKLIST PAGE ===== -->
+    <!-- BLACKLIST -->
     <div class="page" id="page-blacklist">
       <div class="alertBox" id="bl-alert"></div>
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">Add to Blacklist</div>
-        </div>
+        <div class="card-header"><div class="card-title">Add to Blacklist</div></div>
         <div class="form-row cols3" style="margin-bottom:16px;">
-          <div class="form-group">
-            <label class="form-label">Application</label>
-            <select class="form-select" id="blAppId"><option value="">Select App...</option></select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Type</label>
-            <select class="form-select" id="blType">
-              <option value="hwid">HWID</option>
-              <option value="ip">IP Address</option>
-              <option value="username">Username</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Value</label>
-            <input class="form-input" id="blValue" placeholder="HWID / IP / Username"/>
-          </div>
+          <div class="form-group"><label class="form-label">Application</label><select class="form-select" id="blAppId"><option value="">Select App...</option></select></div>
+          <div class="form-group"><label class="form-label">Type</label><select class="form-select" id="blType"><option value="hwid">HWID</option><option value="ip">IP Address</option><option value="username">Username</option></select></div>
+          <div class="form-group"><label class="form-label">Value</label><input class="form-input" id="blValue" placeholder="HWID / IP / Username"/></div>
         </div>
-        <div class="form-group" style="margin-bottom:16px;">
-          <label class="form-label">Reason</label>
-          <input class="form-input" id="blReason" placeholder="Reason for blacklisting"/>
-        </div>
+        <div class="form-group" style="margin-bottom:16px;"><label class="form-label">Reason</label><input class="form-input" id="blReason" placeholder="Reason"/></div>
         <button class="btn btn-danger" onclick="addBlacklist()">🚫 Add to Blacklist</button>
       </div>
-
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">Blacklist Entries</div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Type</th><th>Value</th><th>Reason</th><th>Added</th><th>Actions</th></tr></thead>
-            <tbody id="blacklistTable"><tr><td colspan="5"><div class="empty"><div class="empty-icon">🚫</div><div class="empty-text">Blacklist is empty</div></div></td></tr></tbody>
-          </table>
-        </div>
+        <div class="card-header"><div class="card-title">Blacklist Entries</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Type</th><th>Value</th><th>Reason</th><th>Added</th><th>Actions</th></tr></thead>
+          <tbody id="blacklistTable"><tr><td colspan="5"><div class="empty"><div class="empty-icon">🚫</div><div class="empty-text">Blacklist is empty</div></div></td></tr></tbody>
+        </table></div>
       </div>
     </div>
 
-    <!-- ===== ACTIVITY PAGE ===== -->
+    <!-- VARIABLES -->
+    <div class="page" id="page-variables">
+      <div class="alertBox" id="var-alert"></div>
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">App Variables</div><div class="card-sub">Global key-value pairs for your app</div></div></div>
+        <div class="form-row cols3" style="margin-bottom:16px;">
+          <div class="form-group"><label class="form-label">Application</label><select class="form-select" id="varAppId" onchange="loadVariables()"><option value="">Select App...</option></select></div>
+          <div class="form-group"><label class="form-label">Key</label><input class="form-input" id="varKey" placeholder="e.g. version"/></div>
+          <div class="form-group"><label class="form-label">Value</label><input class="form-input" id="varValue" placeholder="e.g. 1.0.0"/></div>
+        </div>
+        <button class="btn btn-primary" onclick="saveVariable()">+ Save Variable</button>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Variables</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Key</th><th>Value</th><th>Created</th><th>Actions</th></tr></thead>
+          <tbody id="variablesTable"><tr><td colspan="4"><div class="empty"><div class="empty-icon">📝</div><div class="empty-text">No variables yet</div></div></td></tr></tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <!-- ANNOUNCEMENTS -->
+    <div class="page" id="page-announcements">
+      <div class="alertBox" id="ann-alert"></div>
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Create Announcement</div><div class="card-sub">Show messages inside your app</div></div></div>
+        <div class="form-row cols2" style="margin-bottom:16px;">
+          <div class="form-group"><label class="form-label">Application</label><select class="form-select" id="annAppId" onchange="loadAnnouncements()"><option value="">Select App...</option></select></div>
+          <div class="form-group"><label class="form-label">Type</label><select class="form-select" id="annType"><option value="info">Info</option><option value="warning">Warning</option><option value="error">Error</option><option value="success">Success</option></select></div>
+        </div>
+        <div class="form-group" style="margin-bottom:16px;"><label class="form-label">Title</label><input class="form-input" id="annTitle" placeholder="Announcement title"/></div>
+        <div class="form-group" style="margin-bottom:16px;"><label class="form-label">Message</label><input class="form-input" id="annMessage" placeholder="Your message here..."/></div>
+        <button class="btn btn-primary" onclick="createAnnouncement()">📢 Create Announcement</button>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Announcements</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Title</th><th>Message</th><th>Type</th><th>Active</th><th>Created</th><th>Actions</th></tr></thead>
+          <tbody id="announcementsTable"><tr><td colspan="6"><div class="empty"><div class="empty-icon">📢</div><div class="empty-text">No announcements yet</div></div></td></tr></tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <!-- SELLERS -->
+    <div class="page" id="page-sellers">
+      <div class="alertBox" id="sel-alert"></div>
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Create Seller</div><div class="card-sub">Add a reseller for your application</div></div></div>
+        <div class="form-row cols3" style="margin-bottom:16px;">
+          <div class="form-group"><label class="form-label">Application</label><select class="form-select" id="selAppId" onchange="loadSellers()"><option value="">Select App...</option></select></div>
+          <div class="form-group"><label class="form-label">Seller Name</label><input class="form-input" id="selName" placeholder="Seller name"/></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="selEmail" placeholder="seller@email.com"/></div>
+        </div>
+        <button class="btn btn-primary" onclick="createSeller()">+ Create Seller</button>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Sellers</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Name</th><th>Email</th><th>Seller Key</th><th>Total Sold</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="sellersTable"><tr><td colspan="6"><div class="empty"><div class="empty-icon">🏪</div><div class="empty-text">No sellers yet</div></div></td></tr></tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <!-- WEBHOOKS -->
+    <div class="page" id="page-webhooks">
+      <div class="alertBox" id="wh-alert"></div>
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Create Webhook</div><div class="card-sub">Get notified on events</div></div></div>
+        <div class="form-row cols2" style="margin-bottom:16px;">
+          <div class="form-group"><label class="form-label">Application</label><select class="form-select" id="whAppId" onchange="loadWebhooks()"><option value="">Select App...</option></select></div>
+          <div class="form-group"><label class="form-label">URL</label><input class="form-input" id="whUrl" placeholder="https://your-server.com/webhook"/></div>
+        </div>
+        <button class="btn btn-primary" onclick="createWebhook()">🔗 Create Webhook</button>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Webhooks</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>URL</th><th>Events</th><th>Secret</th><th>Active</th><th>Actions</th></tr></thead>
+          <tbody id="webhooksTable"><tr><td colspan="5"><div class="empty"><div class="empty-icon">🔗</div><div class="empty-text">No webhooks yet</div></div></td></tr></tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <!-- ACTIVITY -->
     <div class="page" id="page-activity">
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">Activity Log</div>
-          <div class="card-sub">All license validation events</div>
-        </div>
+        <div class="card-header"><div class="card-title">Activity Log</div><div class="card-sub">All events</div></div>
         <div id="activityList"><div class="empty"><div class="empty-icon">📋</div><div class="empty-text">No activity yet</div></div></div>
       </div>
     </div>
 
-    <!-- ===== API KEYS PAGE ===== -->
+    <!-- API KEYS -->
     <div class="page" id="page-apikeys">
       <div class="alertBox" id="ak-alert"></div>
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">Generate API Key</div>
-        </div>
+        <div class="card-header"><div class="card-title">Generate API Key</div></div>
         <div class="form-row cols2" style="margin-bottom:16px;">
-          <div class="form-group">
-            <label class="form-label">Application</label>
-            <select class="form-select" id="akAppId"><option value="">Select App...</option></select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Label</label>
-            <input class="form-input" id="akLabel" placeholder="e.g. Production Key"/>
-          </div>
+          <div class="form-group"><label class="form-label">Application</label><select class="form-select" id="akAppId"><option value="">Select App...</option></select></div>
+          <div class="form-group"><label class="form-label">Label</label><input class="form-input" id="akLabel" placeholder="e.g. Production Key"/></div>
         </div>
         <button class="btn btn-primary" onclick="createApiKey()">+ Generate API Key</button>
       </div>
-
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">Your API Keys</div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Label</th><th>Key (masked)</th><th>App</th><th>Created</th><th>Actions</th></tr></thead>
-            <tbody id="apiKeysTable"><tr><td colspan="5"><div class="empty"><div class="empty-icon">🔐</div><div class="empty-text">No API keys yet</div></div></td></tr></tbody>
-          </table>
-        </div>
+        <div class="card-header"><div class="card-title">Your API Keys</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Label</th><th>Key</th><th>App</th><th>Created</th><th>Actions</th></tr></thead>
+          <tbody id="apiKeysTable"><tr><td colspan="5"><div class="empty"><div class="empty-icon">🔐</div><div class="empty-text">No API keys yet</div></div></td></tr></tbody>
+        </table></div>
       </div>
     </div>
 
-    <!-- ===== SETTINGS PAGE ===== -->
+    <!-- SETTINGS -->
     <div class="page" id="page-settings">
       <div class="card">
         <div class="card-header"><div class="card-title">Account Settings</div></div>
         <div id="settingsInfo" style="font-size:0.85rem;color:var(--muted);line-height:1.8;">Loading...</div>
-        <div style="margin-top:20px;">
-          <button class="btn btn-danger" onclick="logout()">⏻ Logout</button>
-        </div>
+        <div style="margin-top:20px;"><button class="btn btn-danger" onclick="logout()">⏻ Logout</button></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-title">API Integration</div></div>
-        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:16px;">Use this endpoint to validate licenses in your app:</div>
         <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:var(--font-mono);font-size:0.78rem;color:var(--accent3);line-height:2;">
-          POST https://nexauth-backend.onrender.com/api/licenses/validate<br/>
+          POST https://nexauth-backend-1ox9.onrender.com/api/licenses/validate<br/>
           <span style="color:var(--muted);">Body: { appId, key, hwid }</span>
         </div>
       </div>
@@ -520,19 +437,38 @@
   </div>
 </main>
 
+<!-- MODAL: Edit User -->
+<div class="modal-overlay" id="modalEditUser">
+  <div class="modal">
+    <div class="modal-title">Edit User</div>
+    <div class="modal-sub">Update user account details</div>
+    <input type="hidden" id="editUserId"/>
+    <div class="form-row" style="margin-bottom:14px;">
+      <div class="form-group"><label class="form-label">Username</label><input class="form-input" id="editUsername" placeholder="username"/></div>
+    </div>
+    <div class="form-row" style="margin-bottom:14px;">
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="editEmail" placeholder="email"/></div>
+    </div>
+    <div class="form-row" style="margin-bottom:14px;">
+      <div class="form-group"><label class="form-label">New Password (leave empty to keep)</label><input class="form-input" type="password" id="editPassword" placeholder="new password"/></div>
+    </div>
+    <div class="form-row" style="margin-bottom:14px;">
+      <div class="form-group"><label class="form-label">Subscription Expiry</label><input class="form-input" type="datetime-local" id="editExpiry"/></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('modalEditUser')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveEditUser()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
 <!-- MODAL: New App -->
 <div class="modal-overlay" id="modalNewApp">
   <div class="modal">
     <div class="modal-title">Create New App</div>
     <div class="modal-sub">Add a new application to protect with NexAuth</div>
-    <div class="form-group" style="margin-bottom:14px;">
-      <label class="form-label">App Name</label>
-      <input class="form-input" id="modal-appName" placeholder="My App"/>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Description</label>
-      <input class="form-input" id="modal-appDesc" placeholder="Optional"/>
-    </div>
+    <div class="form-group" style="margin-bottom:14px;"><label class="form-label">App Name</label><input class="form-input" id="modal-appName" placeholder="My App"/></div>
+    <div class="form-group"><label class="form-label">Description</label><input class="form-input" id="modal-appDesc" placeholder="Optional"/></div>
     <div class="modal-actions">
       <button class="btn btn-ghost" onclick="closeModal('modalNewApp')">Cancel</button>
       <button class="btn btn-primary" onclick="createAppFromModal()">Create App</button>
@@ -541,21 +477,16 @@
 </div>
 
 <script>
-  const API = 'https://nexauth-backend.onrender.com/api';
+  const API = 'https://nexauth-backend-1ox9.onrender.com/api';
   let token = localStorage.getItem('token');
   let user = JSON.parse(localStorage.getItem('user') || '{}');
   let appsCache = [];
   let selectedHwidLicenseId = null;
 
-  // ── AUTH GUARD ──
   if (!token) window.location.href = 'login.html';
 
-  // ── HELPERS ──
   async function apiFetch(path, opts = {}) {
-    const res = await fetch(API + path, {
-      ...opts,
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token, ...(opts.headers || {}) }
-    });
+    const res = await fetch(API + path, { ...opts, headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token, ...(opts.headers || {}) } });
     return res.json();
   }
 
@@ -567,37 +498,23 @@
     setTimeout(() => { el.className = 'alertBox'; }, 4000);
   }
 
-  function fmtDate(d) {
-    if (!d) return '—';
-    return new Date(d).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
-  }
-
-  function copyText(txt) {
-    navigator.clipboard.writeText(txt).catch(() => {});
-  }
-
-  function logout() {
-    localStorage.clear();
-    window.location.href = 'login.html';
-  }
-
+  function fmtDate(d) { if (!d) return '—'; return new Date(d).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }); }
+  function copyText(txt) { navigator.clipboard.writeText(txt).catch(() => {}); }
+  function logout() { localStorage.clear(); window.location.href = 'login.html'; }
   function closeModal(id) { document.getElementById(id).classList.remove('show'); }
   function openModal(id) { document.getElementById(id).classList.add('show'); }
 
-  // ── INIT USER ──
   function initUser() {
     if (user && user.username) {
       document.getElementById('userName').textContent = user.username;
       document.getElementById('userAvatar').textContent = user.username[0].toUpperCase();
       document.getElementById('userPlan').textContent = (user.plan || 'free').charAt(0).toUpperCase() + (user.plan || 'free').slice(1) + ' Plan';
-      document.getElementById('settingsInfo').innerHTML =
-        `<b>Username:</b> ${user.username}<br/><b>Email:</b> ${user.email || '—'}<br/><b>Plan:</b> ${user.plan || 'free'}<br/><b>User ID:</b> <span style="color:var(--muted);font-size:0.75rem;">${user.id || '—'}</span>`;
+      document.getElementById('settingsInfo').innerHTML = `<b>Username:</b> ${user.username}<br/><b>Email:</b> ${user.email || '—'}<br/><b>Plan:</b> ${user.plan || 'free'}<br/><b>User ID:</b> <span style="color:var(--muted);font-size:0.75rem;">${user.id || '—'}</span>`;
     }
   }
 
-  // ── PAGE NAVIGATION ──
-  const pageTitles = { overview: 'Dashboard', apps: 'Applications', licenses: 'License Keys', hwid: 'HWID Manager', blacklist: 'Blacklist', activity: 'Activity Log', apikeys: 'API Keys', settings: 'Settings' };
-  const topbarLabels = { overview: '+ New App', apps: '+ New App', licenses: '⚡ Generate', hwid: '', blacklist: '', activity: '', apikeys: '+ New Key', settings: '' };
+  const pageTitles = { overview:'Dashboard', apps:'Applications', users:'Users', licenses:'License Keys', hwid:'HWID Manager', blacklist:'Blacklist', variables:'Variables', announcements:'Announcements', sellers:'Sellers', webhooks:'Webhooks', activity:'Activity Log', apikeys:'API Keys', settings:'Settings' };
+  const topbarLabels = { overview:'+ New App', apps:'+ New App', users:'+ New User', licenses:'⚡ Generate', hwid:'', blacklist:'', variables:'', announcements:'', sellers:'', webhooks:'', activity:'', apikeys:'+ New Key', settings:'' };
 
   function showPage(name, el) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -608,113 +525,66 @@
     const btn = document.getElementById('topbarAction');
     btn.textContent = topbarLabels[name] || '';
     btn.style.display = topbarLabels[name] ? 'inline-flex' : 'none';
-    // Load data for page
     if (name === 'overview') loadOverview();
     if (name === 'apps') loadApps();
+    if (name === 'users') { loadAppsIntoSelects(); loadUsers(); }
     if (name === 'licenses') { loadAppsIntoSelects(); loadLicenses(); }
     if (name === 'hwid') loadHwidBindings();
     if (name === 'blacklist') { loadAppsIntoSelects(); loadBlacklist(); }
+    if (name === 'variables') loadAppsIntoSelects();
+    if (name === 'announcements') loadAppsIntoSelects();
+    if (name === 'sellers') loadAppsIntoSelects();
+    if (name === 'webhooks') loadAppsIntoSelects();
     if (name === 'activity') loadActivity();
     if (name === 'apikeys') { loadAppsIntoSelects(); loadApiKeys(); }
   }
 
-  function goToApps() {
-    const appsNavItem = document.querySelectorAll('.nav-item')[1];
-    showPage('apps', appsNavItem);
-  }
+  function goToApps() { const el = document.querySelectorAll('.nav-item')[1]; showPage('apps', el); }
 
   function topbarActionClick() {
     const active = document.querySelector('.nav-item.active');
-    const page = active ? active.getAttribute('onclick').match(/'(\w+)'/)?.[1] : 'overview';
+    const page = active ? (active.getAttribute('onclick') || '').match(/'(\w+)'/)?.[1] : 'overview';
+    if (page === 'users') { document.getElementById('page-users').scrollIntoView(); return; }
     if (page === 'apikeys') { document.getElementById('page-apikeys').scrollIntoView(); return; }
     openModal('modalNewApp');
   }
 
-  // ── LOAD OVERVIEW ──
+  // OVERVIEW
   async function loadOverview() {
     try {
       const appsData = await apiFetch('/apps');
       const apps = appsData.apps || [];
       appsCache = apps;
       document.getElementById('stat-apps').textContent = apps.length;
-
-      let totalLic = 0, activeLic = 0, validations = 0;
-      for (const app of apps) {
-        const ld = await apiFetch('/licenses/list?appId=' + app.id);
-        const lics = ld.licenses || [];
-        totalLic += lics.length;
-        activeLic += lics.filter(l => l.status === 'active').length;
-      }
-
-      // activity count
-      const actData = await apiFetch('/activity');
-      validations = (actData.logs || []).length;
-
-      document.getElementById('stat-licenses').textContent = totalLic;
+      const usersData = await apiFetch('/users');
+      document.getElementById('stat-users').textContent = (usersData.users || []).length;
+      let activeLic = 0;
+      for (const app of apps) { const ld = await apiFetch('/licenses/list?appId=' + app.id); activeLic += (ld.licenses || []).filter(l => l.status === 'active').length; }
       document.getElementById('stat-active').textContent = activeLic;
-      document.getElementById('stat-validations').textContent = validations;
-
-      // Recent apps
+      const actData = await apiFetch('/activity');
+      document.getElementById('stat-validations').textContent = (actData.logs || []).length;
       const recentAppsEl = document.getElementById('recentApps');
-      if (apps.length === 0) {
-        recentAppsEl.innerHTML = '<div class="empty"><div class="empty-icon">📦</div><div class="empty-text">No apps yet</div></div>';
-      } else {
-        recentAppsEl.innerHTML = apps.slice(0, 4).map(a => `
-          <div class="log-item">
-            <div class="log-dot blue"></div>
-            <div class="log-info">
-              <div class="log-event">${a.name}</div>
-              <div class="log-meta">${a.id.slice(0,16)}...</div>
-            </div>
-            <span class="badge badge-${a.status === 'active' ? 'active' : 'revoked'}">${a.status}</span>
-          </div>`).join('');
-      }
-
-      // Recent activity
-      const actEl = document.getElementById('recentActivity');
+      recentAppsEl.innerHTML = apps.length === 0 ? '<div class="empty"><div class="empty-icon">📦</div><div class="empty-text">No apps yet</div></div>' :
+        apps.slice(0, 4).map(a => `<div class="log-item"><div class="log-dot blue"></div><div class="log-info"><div class="log-event">${a.name}</div><div class="log-meta">${a.id.slice(0,16)}...</div></div><span class="badge badge-${a.status === 'active' ? 'active' : 'revoked'}">${a.status}</span></div>`).join('');
       const logs = (actData.logs || []).slice(0, 5);
-      if (logs.length === 0) {
-        actEl.innerHTML = '<div class="empty"><div class="empty-icon">📋</div><div class="empty-text">No activity yet</div></div>';
-      } else {
-        actEl.innerHTML = logs.map(l => `
-          <div class="log-item">
-            <div class="log-dot green"></div>
-            <div class="log-info">
-              <div class="log-event">${l.event.replace(/_/g,' ')}</div>
-              <div class="log-meta">${l.hwid || l.ip || '—'}</div>
-            </div>
-            <div class="log-time">${fmtDate(l.created_at)}</div>
-          </div>`).join('');
-      }
+      document.getElementById('recentActivity').innerHTML = logs.length === 0 ? '<div class="empty"><div class="empty-icon">📋</div><div class="empty-text">No activity yet</div></div>' :
+        logs.map(l => `<div class="log-item"><div class="log-dot green"></div><div class="log-info"><div class="log-event">${l.event.replace(/_/g,' ')}</div><div class="log-meta">${l.hwid || l.ip || '—'}</div></div><div class="log-time">${fmtDate(l.created_at)}</div></div>`).join('');
     } catch(e) {}
   }
 
-  // ── APPS ──
+  // APPS
   async function loadApps() {
     const data = await apiFetch('/apps');
     appsCache = data.apps || [];
     const tbody = document.getElementById('appsTable');
-    if (appsCache.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="5"><div class="empty"><div class="empty-icon">📦</div><div class="empty-text">No apps yet — create one above!</div></div></td></tr>';
-      return;
-    }
-    tbody.innerHTML = appsCache.map(a => `
-      <tr>
-        <td><b>${a.name}</b>${a.description ? `<div style="font-size:0.72rem;color:var(--muted)">${a.description}</div>` : ''}</td>
-        <td><span class="key-cell">${a.id.slice(0,16)}...</span> <button class="copy-btn" onclick="copyText('${a.id}')">📋</button></td>
-        <td><span class="badge badge-${a.status === 'active' ? 'active' : 'revoked'}">${a.status}</span></td>
-        <td>${fmtDate(a.created_at)}</td>
-        <td style="display:flex;gap:6px;">
-          <button class="btn btn-ghost" style="padding:5px 10px;font-size:0.72rem;" onclick="toggleAppStatus('${a.id}','${a.status}')">${a.status === 'active' ? '⏸ Pause' : '▶ Resume'}</button>
-          <button class="btn btn-danger" style="padding:5px 10px;font-size:0.72rem;" onclick="deleteApp('${a.id}')">🗑</button>
-        </td>
-      </tr>`).join('');
+    if (!appsCache.length) { tbody.innerHTML = '<tr><td colspan="5"><div class="empty"><div class="empty-icon">📦</div><div class="empty-text">No apps yet</div></div></td></tr>'; return; }
+    tbody.innerHTML = appsCache.map(a => `<tr><td><b>${a.name}</b>${a.description ? `<div style="font-size:0.72rem;color:var(--muted)">${a.description}</div>` : ''}</td><td><span class="key-cell">${a.id.slice(0,16)}...</span> <button class="copy-btn" onclick="copyText('${a.id}')">📋</button></td><td><span class="badge badge-${a.status === 'active' ? 'active' : 'revoked'}">${a.status}</span></td><td>${fmtDate(a.created_at)}</td><td style="display:flex;gap:6px;"><button class="btn btn-ghost" style="padding:5px 10px;font-size:0.72rem;" onclick="toggleAppStatus('${a.id}','${a.status}')">${a.status === 'active' ? '⏸ Pause' : '▶ Resume'}</button><button class="btn btn-danger" style="padding:5px 10px;font-size:0.72rem;" onclick="deleteApp('${a.id}')">🗑</button></td></tr>`).join('');
   }
 
   async function createApp() {
     const name = document.getElementById('appName').value.trim();
     const desc = document.getElementById('appDesc').value.trim();
-    if (!name) { showAlert('apps-alert', 'App name is required'); return; }
+    if (!name) { showAlert('apps-alert', 'App name required'); return; }
     const data = await apiFetch('/apps', { method: 'POST', body: JSON.stringify({ name, description: desc }) });
     if (data.success) { showAlert('apps-alert', 'App created!', 'success'); document.getElementById('appName').value = ''; document.getElementById('appDesc').value = ''; loadApps(); loadAppsIntoSelects(); }
     else showAlert('apps-alert', data.message || 'Failed');
@@ -729,32 +599,101 @@
   }
 
   async function toggleAppStatus(id, current) {
-    const newStatus = current === 'active' ? 'inactive' : 'active';
-    await apiFetch('/apps/' + id + '/status', { method: 'PATCH', body: JSON.stringify({ status: newStatus }) });
+    await apiFetch('/apps/' + id + '/status', { method: 'PATCH', body: JSON.stringify({ status: current === 'active' ? 'inactive' : 'active' }) });
     loadApps();
   }
 
   async function deleteApp(id) {
-    if (!confirm('Delete this app? All licenses will be affected.')) return;
+    if (!confirm('Delete this app?')) return;
     await apiFetch('/apps/' + id, { method: 'DELETE' });
     loadApps(); loadAppsIntoSelects();
   }
 
-  // ── LOAD APPS INTO SELECTS ──
+  // SELECTS
   async function loadAppsIntoSelects() {
     const data = await apiFetch('/apps');
     appsCache = data.apps || [];
-    const selects = ['licAppId', 'filterApp', 'blAppId', 'akAppId'];
-    selects.forEach(id => {
+    ['licAppId','filterApp','blAppId','akAppId','userAppId','filterUserApp','varAppId','annAppId','selAppId','whAppId'].forEach(id => {
       const el = document.getElementById(id);
       if (!el) return;
-      const isFilter = id === 'filterApp';
-      el.innerHTML = `<option value="">${isFilter ? 'All Apps' : 'Select App...'}</option>` +
-        appsCache.map(a => `<option value="${a.id}">${a.name}</option>`).join('');
+      const isFilter = ['filterApp','filterUserApp'].includes(id);
+      el.innerHTML = `<option value="">${isFilter ? 'All Apps' : 'Select App...'}</option>` + appsCache.map(a => `<option value="${a.id}">${a.name}</option>`).join('');
     });
   }
 
-  // ── LICENSES ──
+  // USERS
+  async function createUser() {
+    const appId = document.getElementById('userAppId').value;
+    const username = document.getElementById('newUsername').value.trim();
+    const password = document.getElementById('newPassword').value;
+    const email = document.getElementById('newEmail').value.trim();
+    const expiry = document.getElementById('newExpiry').value;
+    if (!username || !password) { showAlert('users-alert', 'Username and password required'); return; }
+    const data = await apiFetch('/users', { method: 'POST', body: JSON.stringify({ appId: appId || null, username, password, email, expiry: expiry || null }) });
+    if (data.success) { showAlert('users-alert', 'User created!', 'success'); document.getElementById('newUsername').value = ''; document.getElementById('newPassword').value = ''; document.getElementById('newEmail').value = ''; loadUsers(); }
+    else showAlert('users-alert', data.message || 'Failed');
+  }
+
+  async function loadUsers() {
+    const filterAppId = document.getElementById('filterUserApp')?.value;
+    if (!appsCache.length) await loadAppsIntoSelects();
+    const url = filterAppId ? `/users?appId=${filterAppId}` : '/users';
+    const data = await apiFetch(url);
+    const users = data.users || [];
+    const tbody = document.getElementById('usersTable');
+    if (!users.length) { tbody.innerHTML = '<tr><td colspan="7"><div class="empty"><div class="empty-icon">👥</div><div class="empty-text">No users yet</div></div></td></tr>'; return; }
+    const appName = id => appsCache.find(a => a.id === id)?.name || '—';
+    tbody.innerHTML = users.map(u => `<tr>
+      <td><b>${u.username}</b></td>
+      <td>${u.email || '—'}</td>
+      <td>${appName(u.app_id)}</td>
+      <td>${u.hwid ? `<span class="hwid-tag">${u.hwid.slice(0,12)}...</span>` : '<span style="color:var(--muted)">—</span>'}</td>
+      <td>${u.subscription_expiry ? fmtDate(u.subscription_expiry) : '<span class="badge badge-lifetime">∞</span>'}</td>
+      <td><span class="badge badge-${u.status}">${u.status}</span></td>
+      <td style="display:flex;gap:4px;flex-wrap:wrap;">
+        <button class="btn btn-ghost" style="padding:4px 8px;font-size:0.7rem;" onclick="openEditUser('${u.id}','${u.username}','${u.email||''}','${u.subscription_expiry||''}')">✏️</button>
+        ${u.hwid ? `<button class="btn btn-ghost" style="padding:4px 8px;font-size:0.7rem;" onclick="resetUserHwid('${u.id}')">↺ HWID</button>` : ''}
+        <button class="btn btn-${u.status === 'banned' ? 'success' : 'warning'}" style="padding:4px 8px;font-size:0.7rem;" onclick="banUser('${u.id}')">${u.status === 'banned' ? '✓ Unban' : '⛔ Ban'}</button>
+        <button class="btn btn-danger" style="padding:4px 8px;font-size:0.7rem;" onclick="deleteUser('${u.id}')">🗑</button>
+      </td>
+    </tr>`).join('');
+  }
+
+  function openEditUser(id, username, email, expiry) {
+    document.getElementById('editUserId').value = id;
+    document.getElementById('editUsername').value = username;
+    document.getElementById('editEmail').value = email;
+    document.getElementById('editPassword').value = '';
+    document.getElementById('editExpiry').value = expiry ? new Date(expiry).toISOString().slice(0,16) : '';
+    openModal('modalEditUser');
+  }
+
+  async function saveEditUser() {
+    const id = document.getElementById('editUserId').value;
+    const updates = { username: document.getElementById('editUsername').value, email: document.getElementById('editEmail').value, expiry: document.getElementById('editExpiry').value || null };
+    const pass = document.getElementById('editPassword').value;
+    if (pass) updates.password = pass;
+    const data = await apiFetch('/users/' + id, { method: 'PATCH', body: JSON.stringify(updates) });
+    if (data.success) { closeModal('modalEditUser'); loadUsers(); }
+  }
+
+  async function resetUserHwid(id) {
+    const data = await apiFetch('/users/' + id + '/reset-hwid', { method: 'POST' });
+    if (data.success) { showAlert('users-alert', 'HWID reset!', 'success'); loadUsers(); }
+  }
+
+  async function banUser(id) {
+    const data = await apiFetch('/users/' + id + '/ban', { method: 'POST' });
+    if (data.success) loadUsers();
+  }
+
+  async function deleteUser(id) {
+    if (!confirm('Delete this user?')) return;
+    await apiFetch('/users/' + id, { method: 'DELETE' });
+    loadUsers();
+  }
+
+  // LICENSES
   async function generateLicenses() {
     const appId = document.getElementById('licAppId').value;
     const type = document.getElementById('licType').value;
@@ -770,68 +709,26 @@
 
   async function loadLicenses() {
     const filterAppId = document.getElementById('filterApp')?.value;
-    if (!appsCache.length) { await loadAppsIntoSelects(); }
+    if (!appsCache.length) await loadAppsIntoSelects();
     const appsToLoad = filterAppId ? [{ id: filterAppId }] : appsCache;
     let allLics = [];
-    for (const app of appsToLoad) {
-      const data = await apiFetch('/licenses/list?appId=' + app.id);
-      const lics = (data.licenses || []).map(l => ({ ...l, appName: appsCache.find(a => a.id === l.app_id)?.name || l.app_id }));
-      allLics = allLics.concat(lics);
-    }
+    for (const app of appsToLoad) { const data = await apiFetch('/licenses/list?appId=' + app.id); allLics = allLics.concat((data.licenses || []).map(l => ({ ...l, appName: appsCache.find(a => a.id === l.app_id)?.name || l.app_id }))); }
     const tbody = document.getElementById('licensesTable');
-    if (allLics.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="7"><div class="empty"><div class="empty-icon">🔑</div><div class="empty-text">No licenses yet</div></div></td></tr>';
-      return;
-    }
-    tbody.innerHTML = allLics.map(l => `
-      <tr>
-        <td><span class="key-cell">${l.key}</span> <button class="copy-btn" onclick="copyText('${l.key}')">📋</button></td>
-        <td>${l.appName}</td>
-        <td><span class="badge badge-${l.type}">${l.type}</span></td>
-        <td><span class="badge badge-${l.status}">${l.status}</span></td>
-        <td>${l.hwid ? `<span class="hwid-tag">${l.hwid.slice(0,16)}...</span>` : '<span style="color:var(--muted)">—</span>'}</td>
-        <td>${l.expires_at ? fmtDate(l.expires_at) : '<span class="badge badge-lifetime">∞</span>'}</td>
-        <td style="display:flex;gap:6px;">
-          ${l.hwid ? `<button class="btn btn-ghost" style="padding:4px 8px;font-size:0.7rem;" onclick="resetHwidById('${l.id}')">↺ HWID</button>` : ''}
-          ${l.status === 'active' ? `<button class="btn btn-danger" style="padding:4px 8px;font-size:0.7rem;" onclick="revokeLicense('${l.id}')">Revoke</button>` : ''}
-        </td>
-      </tr>`).join('');
+    if (!allLics.length) { tbody.innerHTML = '<tr><td colspan="7"><div class="empty"><div class="empty-icon">🔑</div><div class="empty-text">No licenses yet</div></div></td></tr>'; return; }
+    tbody.innerHTML = allLics.map(l => `<tr><td><span class="key-cell">${l.key}</span> <button class="copy-btn" onclick="copyText('${l.key}')">📋</button></td><td>${l.appName}</td><td><span class="badge badge-${l.type}">${l.type}</span></td><td><span class="badge badge-${l.status}">${l.status}</span></td><td>${l.hwid ? `<span class="hwid-tag">${l.hwid.slice(0,16)}...</span>` : '<span style="color:var(--muted)">—</span>'}</td><td>${l.expires_at ? fmtDate(l.expires_at) : '<span class="badge badge-lifetime">∞</span>'}</td><td style="display:flex;gap:4px;">${l.hwid ? `<button class="btn btn-ghost" style="padding:4px 8px;font-size:0.7rem;" onclick="resetHwidById('${l.id}')">↺ HWID</button>` : ''}${l.status === 'active' ? `<button class="btn btn-danger" style="padding:4px 8px;font-size:0.7rem;" onclick="revokeLicense('${l.id}')">Revoke</button>` : ''}</td></tr>`).join('');
   }
 
-  async function revokeLicense(id) {
-    if (!confirm('Revoke this license?')) return;
-    const data = await apiFetch('/licenses/revoke', { method: 'POST', body: JSON.stringify({ licenseId: id }) });
-    if (data.success) loadLicenses();
-    else showAlert('lic-alert', data.message || 'Failed');
-  }
+  async function revokeLicense(id) { if (!confirm('Revoke?')) return; const data = await apiFetch('/licenses/revoke', { method: 'POST', body: JSON.stringify({ licenseId: id }) }); if (data.success) loadLicenses(); }
+  async function resetHwidById(id) { const data = await apiFetch('/hwid/reset', { method: 'POST', body: JSON.stringify({ licenseId: id }) }); if (data.success) { showAlert('lic-alert', 'HWID reset!', 'success'); loadLicenses(); } }
 
-  async function resetHwidById(id) {
-    const data = await apiFetch('/hwid/reset', { method: 'POST', body: JSON.stringify({ licenseId: id }) });
-    if (data.success) { showAlert('lic-alert', 'HWID reset successfully!', 'success'); loadLicenses(); }
-    else showAlert('lic-alert', data.message || 'Failed');
-  }
-
-  // ── HWID ──
+  // HWID
   async function loadHwidBindings() {
     if (!appsCache.length) await loadAppsIntoSelects();
     let allLics = [];
-    for (const app of appsCache) {
-      const data = await apiFetch('/licenses/list?appId=' + app.id);
-      allLics = allLics.concat((data.licenses || []).filter(l => l.hwid));
-    }
+    for (const app of appsCache) { const data = await apiFetch('/licenses/list?appId=' + app.id); allLics = allLics.concat((data.licenses || []).filter(l => l.hwid)); }
     const tbody = document.getElementById('hwidTable');
-    if (allLics.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="5"><div class="empty"><div class="empty-icon">💻</div><div class="empty-text">No HWID bindings yet</div></div></td></tr>';
-      return;
-    }
-    tbody.innerHTML = allLics.map(l => `
-      <tr>
-        <td><span class="key-cell">${l.key}</span></td>
-        <td><span class="hwid-tag">${l.hwid}</span></td>
-        <td><span class="badge badge-${l.type}">${l.type}</span></td>
-        <td><span class="badge badge-${l.status}">${l.status}</span></td>
-        <td><button class="btn btn-danger" style="padding:4px 10px;font-size:0.72rem;" onclick="resetHwidById('${l.id}')">↺ Reset</button></td>
-      </tr>`).join('');
+    if (!allLics.length) { tbody.innerHTML = '<tr><td colspan="5"><div class="empty"><div class="empty-icon">💻</div><div class="empty-text">No HWID bindings</div></div></td></tr>'; return; }
+    tbody.innerHTML = allLics.map(l => `<tr><td><span class="key-cell">${l.key}</span></td><td><span class="hwid-tag">${l.hwid}</span></td><td><span class="badge badge-${l.type}">${l.type}</span></td><td><span class="badge badge-${l.status}">${l.status}</span></td><td><button class="btn btn-danger" style="padding:4px 10px;font-size:0.72rem;" onclick="resetHwidById('${l.id}')">↺ Reset</button></td></tr>`).join('');
   }
 
   async function searchLicenseForHwid() {
@@ -839,11 +736,7 @@
     if (!key) { showAlert('hwid-alert', 'Enter a license key'); return; }
     if (!appsCache.length) await loadAppsIntoSelects();
     let found = null;
-    for (const app of appsCache) {
-      const data = await apiFetch('/licenses/list?appId=' + app.id);
-      found = (data.licenses || []).find(l => l.key === key);
-      if (found) break;
-    }
+    for (const app of appsCache) { const data = await apiFetch('/licenses/list?appId=' + app.id); found = (data.licenses || []).find(l => l.key === key); if (found) break; }
     if (!found) { showAlert('hwid-alert', 'License not found'); return; }
     selectedHwidLicenseId = found.id;
     document.getElementById('currentHwid').textContent = found.hwid || 'Not bound';
@@ -853,78 +746,128 @@
   async function resetHwid() {
     if (!selectedHwidLicenseId) return;
     const data = await apiFetch('/hwid/reset', { method: 'POST', body: JSON.stringify({ licenseId: selectedHwidLicenseId }) });
-    if (data.success) {
-      showAlert('hwid-alert', 'HWID reset successfully!', 'success');
-      document.getElementById('currentHwid').textContent = 'Not bound';
-      document.getElementById('hwidResult').style.display = 'none';
-      loadHwidBindings();
-    } else showAlert('hwid-alert', data.message || 'Failed');
+    if (data.success) { showAlert('hwid-alert', 'HWID reset!', 'success'); document.getElementById('hwidResult').style.display = 'none'; loadHwidBindings(); }
   }
 
-  // ── BLACKLIST ──
+  // BLACKLIST
   async function addBlacklist() {
-    const appId = document.getElementById('blAppId').value;
-    const type = document.getElementById('blType').value;
-    const value = document.getElementById('blValue').value.trim();
-    const reason = document.getElementById('blReason').value.trim();
-    if (!appId || !value) { showAlert('bl-alert', 'App and value are required'); return; }
+    const appId = document.getElementById('blAppId').value; const type = document.getElementById('blType').value; const value = document.getElementById('blValue').value.trim(); const reason = document.getElementById('blReason').value.trim();
+    if (!appId || !value) { showAlert('bl-alert', 'App and value required'); return; }
     const data = await apiFetch('/hwid/blacklist', { method: 'POST', body: JSON.stringify({ appId, type, value, reason }) });
-    if (data.success) { showAlert('bl-alert', 'Added to blacklist!', 'success'); document.getElementById('blValue').value = ''; document.getElementById('blReason').value = ''; loadBlacklist(); }
+    if (data.success) { showAlert('bl-alert', 'Added!', 'success'); document.getElementById('blValue').value = ''; loadBlacklist(); }
     else showAlert('bl-alert', data.message || 'Failed');
   }
 
   async function loadBlacklist() {
     if (!appsCache.length) await loadAppsIntoSelects();
     let allBl = [];
-    for (const app of appsCache) {
-      const data = await apiFetch('/hwid/blacklist?appId=' + app.id);
-      allBl = allBl.concat(data.blacklist || []);
-    }
+    for (const app of appsCache) { const data = await apiFetch('/hwid/blacklist?appId=' + app.id); allBl = allBl.concat(data.blacklist || []); }
     const tbody = document.getElementById('blacklistTable');
-    if (allBl.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="5"><div class="empty"><div class="empty-icon">🚫</div><div class="empty-text">Blacklist is empty</div></div></td></tr>';
-      return;
-    }
-    tbody.innerHTML = allBl.map(b => `
-      <tr>
-        <td><span class="badge badge-revoked">${b.type}</span></td>
-        <td><span class="hwid-tag">${b.value}</span></td>
-        <td>${b.reason || '—'}</td>
-        <td>${fmtDate(b.created_at)}</td>
-        <td><button class="btn btn-danger" style="padding:4px 10px;font-size:0.72rem;" onclick="removeBlacklist('${b.id}')">Remove</button></td>
-      </tr>`).join('');
+    if (!allBl.length) { tbody.innerHTML = '<tr><td colspan="5"><div class="empty"><div class="empty-icon">🚫</div><div class="empty-text">Blacklist empty</div></div></td></tr>'; return; }
+    tbody.innerHTML = allBl.map(b => `<tr><td><span class="badge badge-revoked">${b.type}</span></td><td><span class="hwid-tag">${b.value}</span></td><td>${b.reason || '—'}</td><td>${fmtDate(b.created_at)}</td><td><button class="btn btn-danger" style="padding:4px 10px;font-size:0.72rem;" onclick="removeBlacklist('${b.id}')">Remove</button></td></tr>`).join('');
   }
 
-  async function removeBlacklist(id) {
-    await apiFetch('/hwid/blacklist/' + id, { method: 'DELETE' });
-    loadBlacklist();
+  async function removeBlacklist(id) { await apiFetch('/hwid/blacklist/' + id, { method: 'DELETE' }); loadBlacklist(); }
+
+  // VARIABLES
+  async function saveVariable() {
+    const appId = document.getElementById('varAppId').value; const key = document.getElementById('varKey').value.trim(); const value = document.getElementById('varValue').value.trim();
+    if (!appId || !key) { showAlert('var-alert', 'App and key required'); return; }
+    const data = await apiFetch('/variables', { method: 'POST', body: JSON.stringify({ appId, key, value }) });
+    if (data.success) { showAlert('var-alert', 'Saved!', 'success'); document.getElementById('varKey').value = ''; document.getElementById('varValue').value = ''; loadVariables(); }
+    else showAlert('var-alert', data.message || 'Failed');
   }
 
-  // ── ACTIVITY ──
+  async function loadVariables() {
+    const appId = document.getElementById('varAppId').value;
+    if (!appId) return;
+    const data = await apiFetch('/variables?appId=' + appId);
+    const vars = data.variables || [];
+    const tbody = document.getElementById('variablesTable');
+    if (!vars.length) { tbody.innerHTML = '<tr><td colspan="4"><div class="empty"><div class="empty-icon">📝</div><div class="empty-text">No variables yet</div></div></td></tr>'; return; }
+    tbody.innerHTML = vars.map(v => `<tr><td><b>${v.key}</b></td><td><span class="key-cell">${v.value}</span></td><td>${fmtDate(v.created_at)}</td><td><button class="btn btn-danger" style="padding:4px 10px;font-size:0.72rem;" onclick="deleteVariable('${v.id}')">Delete</button></td></tr>`).join('');
+  }
+
+  async function deleteVariable(id) { await apiFetch('/variables/' + id, { method: 'DELETE' }); loadVariables(); }
+
+  // ANNOUNCEMENTS
+  async function createAnnouncement() {
+    const appId = document.getElementById('annAppId').value; const title = document.getElementById('annTitle').value.trim(); const message = document.getElementById('annMessage').value.trim(); const type = document.getElementById('annType').value;
+    if (!appId || !title || !message) { showAlert('ann-alert', 'All fields required'); return; }
+    const data = await apiFetch('/announcements', { method: 'POST', body: JSON.stringify({ appId, title, message, type }) });
+    if (data.success) { showAlert('ann-alert', 'Created!', 'success'); document.getElementById('annTitle').value = ''; document.getElementById('annMessage').value = ''; loadAnnouncements(); }
+    else showAlert('ann-alert', data.message || 'Failed');
+  }
+
+  async function loadAnnouncements() {
+    const appId = document.getElementById('annAppId').value;
+    if (!appId) return;
+    const data = await apiFetch('/announcements?appId=' + appId);
+    const anns = data.announcements || [];
+    const tbody = document.getElementById('announcementsTable');
+    if (!anns.length) { tbody.innerHTML = '<tr><td colspan="6"><div class="empty"><div class="empty-icon">📢</div><div class="empty-text">No announcements</div></div></td></tr>'; return; }
+    tbody.innerHTML = anns.map(a => `<tr><td><b>${a.title}</b></td><td>${a.message.substring(0,40)}...</td><td><span class="badge badge-${a.type}">${a.type}</span></td><td><span class="badge badge-${a.active ? 'active' : 'revoked'}">${a.active ? 'Yes' : 'No'}</span></td><td>${fmtDate(a.created_at)}</td><td style="display:flex;gap:4px;"><button class="btn btn-ghost" style="padding:4px 8px;font-size:0.7rem;" onclick="toggleAnnouncement('${a.id}',${a.active})">${a.active ? 'Disable' : 'Enable'}</button><button class="btn btn-danger" style="padding:4px 8px;font-size:0.7rem;" onclick="deleteAnnouncement('${a.id}')">🗑</button></td></tr>`).join('');
+  }
+
+  async function toggleAnnouncement(id, current) { await apiFetch('/announcements/' + id, { method: 'PATCH', body: JSON.stringify({ active: !current }) }); loadAnnouncements(); }
+  async function deleteAnnouncement(id) { await apiFetch('/announcements/' + id, { method: 'DELETE' }); loadAnnouncements(); }
+
+  // SELLERS
+  async function createSeller() {
+    const appId = document.getElementById('selAppId').value; const name = document.getElementById('selName').value.trim(); const email = document.getElementById('selEmail').value.trim();
+    if (!appId || !name || !email) { showAlert('sel-alert', 'All fields required'); return; }
+    const data = await apiFetch('/sellers', { method: 'POST', body: JSON.stringify({ appId, name, email }) });
+    if (data.success) { showAlert('sel-alert', 'Seller created!', 'success'); document.getElementById('selName').value = ''; document.getElementById('selEmail').value = ''; loadSellers(); }
+    else showAlert('sel-alert', data.message || 'Failed');
+  }
+
+  async function loadSellers() {
+    const appId = document.getElementById('selAppId').value;
+    if (!appId) return;
+    const data = await apiFetch('/sellers?appId=' + appId);
+    const sellers = data.sellers || [];
+    const tbody = document.getElementById('sellersTable');
+    if (!sellers.length) { tbody.innerHTML = '<tr><td colspan="6"><div class="empty"><div class="empty-icon">🏪</div><div class="empty-text">No sellers yet</div></div></td></tr>'; return; }
+    tbody.innerHTML = sellers.map(s => `<tr><td><b>${s.name}</b></td><td>${s.email}</td><td><span class="key-cell">${s.key}</span> <button class="copy-btn" onclick="copyText('${s.key}')">📋</button></td><td>${s.total_sold}</td><td><span class="badge badge-${s.status}">${s.status}</span></td><td style="display:flex;gap:4px;"><button class="btn btn-${s.status === 'banned' ? 'success' : 'warning'}" style="padding:4px 8px;font-size:0.7rem;" onclick="banSeller('${s.id}')">${s.status === 'banned' ? 'Unban' : 'Ban'}</button><button class="btn btn-danger" style="padding:4px 8px;font-size:0.7rem;" onclick="deleteSeller('${s.id}')">🗑</button></td></tr>`).join('');
+  }
+
+  async function banSeller(id) { await apiFetch('/sellers/' + id + '/ban', { method: 'POST' }); loadSellers(); }
+  async function deleteSeller(id) { if (!confirm('Delete seller?')) return; await apiFetch('/sellers/' + id, { method: 'DELETE' }); loadSellers(); }
+
+  // WEBHOOKS
+  async function createWebhook() {
+    const appId = document.getElementById('whAppId').value; const url = document.getElementById('whUrl').value.trim();
+    if (!appId || !url) { showAlert('wh-alert', 'App and URL required'); return; }
+    const data = await apiFetch('/webhooks', { method: 'POST', body: JSON.stringify({ appId, url }) });
+    if (data.success) { showAlert('wh-alert', 'Webhook created!', 'success'); document.getElementById('whUrl').value = ''; loadWebhooks(); }
+    else showAlert('wh-alert', data.message || 'Failed');
+  }
+
+  async function loadWebhooks() {
+    const appId = document.getElementById('whAppId').value;
+    if (!appId) return;
+    const data = await apiFetch('/webhooks?appId=' + appId);
+    const hooks = data.webhooks || [];
+    const tbody = document.getElementById('webhooksTable');
+    if (!hooks.length) { tbody.innerHTML = '<tr><td colspan="5"><div class="empty"><div class="empty-icon">🔗</div><div class="empty-text">No webhooks yet</div></div></td></tr>'; return; }
+    tbody.innerHTML = hooks.map(h => `<tr><td><span class="key-cell" style="font-size:0.75rem;">${h.url}</span></td><td>${(h.events||[]).join(', ')}</td><td><span class="hwid-tag">${h.secret ? h.secret.slice(0,12)+'...' : '—'}</span></td><td><span class="badge badge-${h.active ? 'active' : 'revoked'}">${h.active ? 'Yes' : 'No'}</span></td><td style="display:flex;gap:4px;"><button class="btn btn-ghost" style="padding:4px 8px;font-size:0.7rem;" onclick="toggleWebhook('${h.id}',${h.active})">${h.active ? 'Disable' : 'Enable'}</button><button class="btn btn-danger" style="padding:4px 8px;font-size:0.7rem;" onclick="deleteWebhook('${h.id}')">🗑</button></td></tr>`).join('');
+  }
+
+  async function toggleWebhook(id, current) { await apiFetch('/webhooks/' + id, { method: 'PATCH', body: JSON.stringify({ active: !current }) }); loadWebhooks(); }
+  async function deleteWebhook(id) { await apiFetch('/webhooks/' + id, { method: 'DELETE' }); loadWebhooks(); }
+
+  // ACTIVITY
   async function loadActivity() {
-    const data = await apiFetch('/activity');
-    const logs = data.logs || [];
+    const data = await apiFetch('/activity'); const logs = data.logs || [];
     const el = document.getElementById('activityList');
-    if (logs.length === 0) {
-      el.innerHTML = '<div class="empty"><div class="empty-icon">📋</div><div class="empty-text">No activity yet</div></div>';
-      return;
-    }
+    if (!logs.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">📋</div><div class="empty-text">No activity yet</div></div>'; return; }
     const dotColor = e => e.includes('valid') ? 'green' : e.includes('revok') ? 'red' : 'blue';
-    el.innerHTML = logs.map(l => `
-      <div class="log-item">
-        <div class="log-dot ${dotColor(l.event)}"></div>
-        <div class="log-info">
-          <div class="log-event">${l.event.replace(/_/g,' ')}</div>
-          <div class="log-meta">HWID: ${l.hwid || '—'} · IP: ${l.ip || '—'}</div>
-        </div>
-        <div class="log-time">${fmtDate(l.created_at)}</div>
-      </div>`).join('');
+    el.innerHTML = logs.map(l => `<div class="log-item"><div class="log-dot ${dotColor(l.event)}"></div><div class="log-info"><div class="log-event">${l.event.replace(/_/g,' ')}</div><div class="log-meta">HWID: ${l.hwid || '—'} · IP: ${l.ip || '—'}</div></div><div class="log-time">${fmtDate(l.created_at)}</div></div>`).join('');
   }
 
-  // ── API KEYS ──
+  // API KEYS
   async function createApiKey() {
-    const appId = document.getElementById('akAppId').value;
-    const label = document.getElementById('akLabel').value.trim();
+    const appId = document.getElementById('akAppId').value; const label = document.getElementById('akLabel').value.trim();
     if (!appId) { showAlert('ak-alert', 'Please select an app'); return; }
     const data = await apiFetch('/apikeys', { method: 'POST', body: JSON.stringify({ appId, label }) });
     if (data.success) { showAlert('ak-alert', 'API Key created!', 'success'); loadApiKeys(); }
@@ -934,32 +877,14 @@
   async function loadApiKeys() {
     if (!appsCache.length) await loadAppsIntoSelects();
     let allKeys = [];
-    for (const app of appsCache) {
-      const data = await apiFetch('/apikeys?appId=' + app.id);
-      allKeys = allKeys.concat((data.apiKeys || []).map(k => ({ ...k, appName: app.name })));
-    }
+    for (const app of appsCache) { const data = await apiFetch('/apikeys?appId=' + app.id); allKeys = allKeys.concat((data.apiKeys || []).map(k => ({ ...k, appName: app.name }))); }
     const tbody = document.getElementById('apiKeysTable');
-    if (allKeys.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="5"><div class="empty"><div class="empty-icon">🔐</div><div class="empty-text">No API keys yet</div></div></td></tr>';
-      return;
-    }
-    tbody.innerHTML = allKeys.map(k => `
-      <tr>
-        <td>${k.label}</td>
-        <td><span class="key-cell">${k.key}</span></td>
-        <td>${k.appName}</td>
-        <td>${fmtDate(k.created_at)}</td>
-        <td><button class="btn btn-danger" style="padding:4px 10px;font-size:0.72rem;" onclick="deleteApiKey('${k.id}')">Delete</button></td>
-      </tr>`).join('');
+    if (!allKeys.length) { tbody.innerHTML = '<tr><td colspan="5"><div class="empty"><div class="empty-icon">🔐</div><div class="empty-text">No API keys yet</div></div></td></tr>'; return; }
+    tbody.innerHTML = allKeys.map(k => `<tr><td>${k.label}</td><td><span class="key-cell">${k.key}</span></td><td>${k.appName}</td><td>${fmtDate(k.created_at)}</td><td><button class="btn btn-danger" style="padding:4px 10px;font-size:0.72rem;" onclick="deleteApiKey('${k.id}')">Delete</button></td></tr>`).join('');
   }
 
-  async function deleteApiKey(id) {
-    if (!confirm('Delete this API key?')) return;
-    await apiFetch('/apikeys/' + id, { method: 'DELETE' });
-    loadApiKeys();
-  }
+  async function deleteApiKey(id) { if (!confirm('Delete?')) return; await apiFetch('/apikeys/' + id, { method: 'DELETE' }); loadApiKeys(); }
 
-  // ── BOOT ──
   initUser();
   loadOverview();
   document.getElementById('topbarAction').style.display = 'inline-flex';
